@@ -18,6 +18,7 @@ async function main() {
                 { name: "Japanese" },
                 { name: "Asian" },
                 { name: "Sides" },
+                { name: "Other" },
             ]
         })
     } catch (error) {

@@ -20,7 +20,7 @@ export const Sidebar = () => {
         },
         {
             icon: Utensils,
-            href: "/recipe/new",
+            href: "/feed",
             label: "Feed"
         }
     ];

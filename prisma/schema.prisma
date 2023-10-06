@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -13,4 +14,28 @@ datasource db {
 model Category {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   name            String
+  recipes         Recipe[]
+}
+
+model Recipe {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  userId          String
+  userName        String
+  src             String
+  difficulty      Int
+
+  time            Int[]
+  modifier        String[]
+  instruction     String[]
+  ingredients     String[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  category        Category @relation(fields:[categoryId], references: [id])
+  categoryId      String @db.ObjectId
+
+  @@index([categoryId])
+  @@fulltext([name])
 }
